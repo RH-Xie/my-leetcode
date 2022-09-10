@@ -25,6 +25,7 @@ function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
   if (!p || !q) return false; // 有一个为空，返回false
   // 都不为空，比较值
   return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+  // 这里===不加括号，因为===的优先级高于&&，所以不加括号也没问题。
 };
 // @lc code=end
 
