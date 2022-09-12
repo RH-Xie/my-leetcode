@@ -22,6 +22,8 @@
 function maxDepth(root: TreeNode | null): number {
   if(!root) return 0;
   return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+  // 这个+1的时机怎么把握？是在递归的时候加1，还是在返回的时候加1？
+  // 在我看来是，能够return就表明当前不为空，可+1，至于子树是否为空，“传进去问问”，空就return 0，不空就递归。
 };
 // @lc code=end
 
