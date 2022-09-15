@@ -13,17 +13,28 @@ function hashCode(mat): string {
 }
 
 function bfs(mat: Matrix, target: Matrix) {
-    let queue: string[] = [hashCode(mat)];
-    let isContinue = true;
-    let currentMats = [mat];
-    while (isContinue) {
-      let arr = [];
-      currentMats.forEach((matrix) => {
-      spread(matrix)
-      })
+    let queue: Matrix[] = [];
+    let visited: Set<string> = new Set();
+    queue.push(mat);
+    visited.add(hashCode(mat));
+    let step: number = 0;
+    while (queue.length > 0) {
+        let size: number = queue.length;
+        for (let i = 0; i < size; i++) {
+            let cur: Matrix = queue.shift();
+            if (verify(cur, target)) {console.log("step", step); return step};
+            let newMats: Matrix[] = spread(cur);
+            newMats.forEach((mat) => {
+                let hash: string = hashCode(mat);
+                if (!visited.has(hash)) {
+                    queue.push(mat);
+                    visited.add(hash);
+                }
+            });
+        }
+        step++;
     }
-
-    return 1;
+    return step;
 }
 
 function verify(mat: Matrix, target: Matrix): boolean {
@@ -89,9 +100,9 @@ function deepcopyArr(arr) {
 }
 
 const test: Matrix = [
-  [1, 2, 3],
-  [8, 0, 4],
-  [7, 6, 5],
+    [2, 8, 3],
+    [1, 6, 4],
+    [7, 0, 5],
 ];
 const target: Matrix = [
     [1, 2, 3],
