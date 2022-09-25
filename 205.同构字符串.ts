@@ -6,7 +6,7 @@
 
 // @lc code=start
 function isIsomorphic(s: string, t: string): boolean {
-  // !!!!  
+  // !!!
   let map: Map<string, string> = new Map();
     let set: Set<string> = new Set();
     for (let i = 0; i < s.length; i++) {
