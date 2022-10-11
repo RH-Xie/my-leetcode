@@ -13,7 +13,7 @@ function isPalindrome(s: string): boolean {
       return false;
     }
   }
-  return true;  
+  return true;
 };
 // @lc code=end
 
