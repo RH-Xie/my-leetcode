@@ -6,7 +6,7 @@
 
 // @lc code=start
 function isAnagram(s: string, t: string): boolean {
-  // 好像有个时间刷题。。已经好久没刷了，最近DDL太多
+  // 好像有个时间刷题。。已经好久没刷了，最近DDL太多，没办法保持活跃，但更新又不该断，实是为难
   if (s.length !== t.length) {
     return false;
   }
