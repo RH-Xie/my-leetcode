@@ -8,32 +8,30 @@
 function minWindow(s: string, t: string): string {
   let need : Map<string, number> = new Map();
   let window : Map<string, number>  = new Map();
-  for(let i = 0; i < t.length; i++) {
-    let c : string = t.charAt(i);
-    need.set(c, (need.get(c) ?? 0) + 1);
+  for(let c of t) {
+    need.set(c, (need.get(c) || 0) + 1);
   }
-
-  let start : number = 0;
-  let len : number = Number.MAX_VALUE;
-
-  let left = 0;
-  let right = 0;
+  let left = 0, right = 0;
   let valid = 0;
+  let start = 0, len = Number.MAX_SAFE_INTEGER;
   while(right < s.length) {
-    let c = s.charAt(right);
+    let c : string = s.charAt(right);
+    // 扩大窗口
     right++;
     if(need.has(c)) {
-      window.set(c, (window.get(c) ?? 0) + 1);
+      window.set(c, (window.get(c) || 0) + 1);
       if(window.get(c) === need.get(c)) {
         valid++;
       }
     }
     while(valid === need.size) {
+      // 择优
       if(right - left < len) {
         start = left;
         len = right - left;
       }
       let d : string = s.charAt(left);
+      // 收缩窗口
       left++;
       if(need.has(d)) {
         if(window.get(d) === need.get(d)) {
@@ -43,7 +41,7 @@ function minWindow(s: string, t: string): string {
       }
     }
   }
-  return len === Number.MAX_VALUE ? "" : s.substring(start, start + len)
+  return len === Number.MAX_SAFE_INTEGER ? '' : s.substring(start, start + len);
 };
 // @lc code=end
 
