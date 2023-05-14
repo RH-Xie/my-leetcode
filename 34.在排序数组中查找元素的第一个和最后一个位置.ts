@@ -41,7 +41,8 @@ function right_bound(nums: number[], target: number): number {
         }
     }
     // 由于left = mid + 1，程序运行到这里left肯定不是mid了，而是mid+1，但是索引mid处才是我们的target，故left - 1
-    if (left - 1 < 0) return -1;
-    return nums[left - 1] === target ? left - 1 : -1;
+    // if (left - 1 < 0) return -1;
+    // return nums[left - 1] === target ? left - 1 : -1;
+    return target === nums[right - 1] ? right - 1 : -1;
 }
 // @lc code=end

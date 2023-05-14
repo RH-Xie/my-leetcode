@@ -26,7 +26,7 @@ function multiply(num1: string, num2: string): string {
         i++;
     }
     for (; i < res.length; i++) {
-        str += "" + res[i];
+        str += res[i];
     }
     return str;
 }
